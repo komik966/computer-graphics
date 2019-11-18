@@ -21,7 +21,8 @@
       "moment/locale/pl",
       "@material-ui/core/TextField",
       "@material-ui/core/Select",
-      "three/examples/jsm/loaders/GLTFLoader"
+      "three/examples/jsm/loaders/GLTFLoader",
+      "three/examples/jsm/loaders/FBXLoader"
     ],
     "prettier": [
       true,

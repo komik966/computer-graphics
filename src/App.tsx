@@ -1,3 +1,4 @@
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { WebGLRenderer } from 'three';
 import Controls from './Controls';
@@ -6,7 +7,7 @@ import Render from './Render';
 
 const App: FC = () => {
   const webglCanvas = useRef<HTMLDivElement>(null);
-  const renderer = useRef(new WebGLRenderer());
+  const renderer = useRef(new WebGLRenderer({ antialias: true }));
   const [controlsState, setControlsState] = useState(controlsInitialValue);
 
   useEffect(() => {
@@ -29,18 +30,28 @@ const App: FC = () => {
   }, [renderer]);
 
   return (
-    <div style={{ display: 'flex' }}>
-      {webglCanvas && (
-        <Render renderer={renderer.current} controlsState={controlsState} />
-      )}
-      <div ref={webglCanvas} />
-      <div style={{ width: controlsWidth }}>
-        <Controls setState={setControlsState} state={controlsState} />
+    <MuiThemeProvider theme={theme}>
+      <div style={{ display: 'flex' }}>
+        {webglCanvas && (
+          <Render renderer={renderer.current} controlsState={controlsState} />
+        )}
+        <div ref={webglCanvas} />
+        <div style={{ width: controlsWidth }}>
+          <Controls setState={setControlsState} state={controlsState} />
+        </div>
       </div>
-    </div>
+    </MuiThemeProvider>
   );
 };
 
 const controlsWidth = 250;
+const theme = createMuiTheme({
+  props: {
+    MuiTextField: {
+      margin: 'dense',
+      variant: 'outlined'
+    }
+  }
+});
 
 export default App;
