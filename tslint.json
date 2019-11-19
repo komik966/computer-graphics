@@ -22,7 +22,8 @@
       "@material-ui/core/TextField",
       "@material-ui/core/Select",
       "three/examples/jsm/loaders/GLTFLoader",
-      "three/examples/jsm/loaders/FBXLoader"
+      "three/examples/jsm/loaders/FBXLoader",
+      "rxjs/operators"
     ],
     "prettier": [
       true,

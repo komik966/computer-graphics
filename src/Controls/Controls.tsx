@@ -1,9 +1,9 @@
 import { makeStyles, Tab, Tabs } from '@material-ui/core';
 import React, { FC, useState } from 'react';
+import { Objects } from '../App';
 import Camera from './Camera';
-import { State } from './state';
 
-const Controls: FC<Props> = ({ state, setState }) => {
+const Controls: FC<Props> = ({ objects }) => {
   const classes = useStyles();
   const [tab, setTab] = useState(0);
   const navigate = (tabNo: number) => () => setTab(tabNo);
@@ -17,7 +17,7 @@ const Controls: FC<Props> = ({ state, setState }) => {
         <Tab label="Buildings" onClick={navigate(3)} />
       </Tabs>
       <div className={classes.panel}>
-        {tab === 0 && <Camera state={state} setState={setState} />}
+        {tab === 0 && <Camera objects={objects} />}
       </div>
     </>
   );
@@ -30,8 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 interface Props {
-  state: State;
-  setState: (s: State) => void;
+  objects: Objects;
 }
 
 export default Controls;
