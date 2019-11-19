@@ -1,5 +1,5 @@
 /* tslint:disable:object-literal-sort-keys */
-export interface ControlsState {
+export interface State {
   camera: {
     fov: number;
     aspect: number;
@@ -11,7 +11,7 @@ export interface ControlsState {
   };
 }
 
-export const controlsInitialValue: ControlsState = {
+export const initialState: State = {
   camera: {
     fov: 45,
     aspect: 1,

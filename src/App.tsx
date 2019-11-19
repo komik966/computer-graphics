@@ -1,14 +1,14 @@
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { WebGLRenderer } from 'three';
-import Controls from './Controls';
-import { controlsInitialValue } from './controlsState';
+import { initialState } from './Controls';
+import Controls from './Controls/Controls';
 import Render from './Render';
 
 const App: FC = () => {
   const webglCanvas = useRef<HTMLDivElement>(null);
   const renderer = useRef(new WebGLRenderer({ antialias: true }));
-  const [controlsState, setControlsState] = useState(controlsInitialValue);
+  const [controlsState, setControlsState] = useState(initialState);
 
   useEffect(() => {
     if (webglCanvas.current) {
@@ -46,6 +46,13 @@ const App: FC = () => {
 
 const controlsWidth = 250;
 const theme = createMuiTheme({
+  overrides: {
+    MuiTab: {
+      root: {
+        minWidth: '0 !important'
+      }
+    }
+  },
   props: {
     MuiTextField: {
       margin: 'dense',

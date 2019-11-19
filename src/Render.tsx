@@ -9,7 +9,7 @@ import {
 } from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { ControlsState } from './controlsState';
+import { State } from './Controls/state';
 
 const Render: FC<Props> = ({ renderer, controlsState }) => {
   const camera = useRef(new PerspectiveCamera());
@@ -33,8 +33,8 @@ const Render: FC<Props> = ({ renderer, controlsState }) => {
   }, [renderer, controlsState.camera]);
 
   useEffect(() => {
-    // const hlight = new AmbientLight(0x404040, 1);
-    // scene.current.add(hlight);
+    const hlight = new AmbientLight(0x404040, 1);
+    scene.current.add(hlight);
     const directionalLight = new DirectionalLight(0xffffff, 100);
     directionalLight.position.set(0, 1200, 0);
     directionalLight.castShadow = true;
@@ -69,7 +69,7 @@ const Render: FC<Props> = ({ renderer, controlsState }) => {
 
 interface Props {
   renderer: WebGLRenderer;
-  controlsState: ControlsState;
+  controlsState: State;
 }
 
 export default Render;
