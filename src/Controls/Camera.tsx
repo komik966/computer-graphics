@@ -1,6 +1,7 @@
-import { TextField } from '@material-ui/core';
+import { Divider, TextField, Typography } from '@material-ui/core';
 import React, { FC, useState } from 'react';
 import { Objects } from '../App';
+import Arrows from './Arrows';
 
 const Camera: FC<Props> = ({ objects }) => {
   const [state, setState] = useState({
@@ -8,9 +9,6 @@ const Camera: FC<Props> = ({ objects }) => {
     far: 1200,
     fov: 45,
     near: 0.1,
-    rotateX: 0,
-    rotateY: 0,
-    rotateZ: 0,
     x: 0,
     y: 0,
     z: 0
@@ -96,36 +94,32 @@ const Camera: FC<Props> = ({ objects }) => {
           objects.renderer.render(objects.scene, objects.camera);
         }}
       />
-      <TextField
-        type="number"
-        inputProps={{ step: 0.5 }}
-        label="rotate x"
-        value={state.rotateX}
-        onChange={e => {
-          setState({ ...state, rotateX: +e.target.value });
-          objects.camera.rotateX(+e.target.value);
+
+      <Typography>Rotation</Typography>
+      <Divider />
+      <Arrows
+        left={() => {
+          objects.camera.rotateY(0.1);
           objects.renderer.render(objects.scene, objects.camera);
         }}
-      />
-      <TextField
-        type="number"
-        inputProps={{ step: 0.5 }}
-        label="rotate y"
-        value={state.rotateY}
-        onChange={e => {
-          setState({ ...state, rotateX: +e.target.value });
-          objects.camera.rotateY(+e.target.value);
+        up={() => {
+          objects.camera.rotateX(0.1);
           objects.renderer.render(objects.scene, objects.camera);
         }}
-      />
-      <TextField
-        type="number"
-        inputProps={{ step: 0.5 }}
-        label="rotate z"
-        value={state.rotateZ}
-        onChange={e => {
-          setState({ ...state, rotateZ: +e.target.value });
-          objects.camera.rotateZ(+e.target.value);
+        down={() => {
+          objects.camera.rotateX(-0.1);
+          objects.renderer.render(objects.scene, objects.camera);
+        }}
+        right={() => {
+          objects.camera.rotateY(-0.1);
+          objects.renderer.render(objects.scene, objects.camera);
+        }}
+        into={() => {
+          objects.camera.rotateZ(0.1);
+          objects.renderer.render(objects.scene, objects.camera);
+        }}
+        out={() => {
+          objects.camera.rotateZ(-0.1);
           objects.renderer.render(objects.scene, objects.camera);
         }}
       />
