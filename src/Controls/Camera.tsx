@@ -1,7 +1,7 @@
 import { Divider, TextField, Typography } from '@material-ui/core';
 import React, { FC, useState } from 'react';
-import { Objects } from '../App';
 import Arrows from './Arrows';
+import { Objects } from '../types';
 
 const Camera: FC<Props> = ({ objects }) => {
   const [state, setState] = useState({

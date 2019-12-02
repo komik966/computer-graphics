@@ -10,7 +10,7 @@ import {
 import React, { FC } from 'react';
 
 const Arrows: FC<Props> = ({ left, up, down, right, into, out }) => (
-  <div style={{ display: 'flex', alignItems: 'center' }}>
+  <div style={{ alignItems: 'center', display: 'flex' }}>
     <div>
       <IconButton size="small" onClick={left}>
         <KeyboardArrowLeft />
@@ -25,14 +25,14 @@ const Arrows: FC<Props> = ({ left, up, down, right, into, out }) => (
         style={{ display: 'block', padding: 0 }}
         onClick={into}
       >
-        <HighlightOff style={{ width: '0.5em', height: '0.5em' }} />
+        <HighlightOff style={{ height: '0.5em', width: '0.5em' }} />
       </IconButton>
       <IconButton
         size="small"
-        style={{ display: 'block', padding: 0, marginLeft: 18 }}
+        style={{ display: 'block', marginLeft: 18, padding: 0 }}
         onClick={out}
       >
-        <RadioButtonChecked style={{ width: '0.5em', height: '0.5em' }} />
+        <RadioButtonChecked style={{ height: '0.5em', width: '0.5em' }} />
       </IconButton>
       <IconButton size="small" style={{ display: 'block' }} onClick={down}>
         <KeyboardArrowDown />

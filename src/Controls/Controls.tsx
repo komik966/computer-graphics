@@ -1,7 +1,7 @@
 import { makeStyles, Tab, Tabs } from '@material-ui/core';
 import React, { FC, useState } from 'react';
-import { Objects } from '../App';
 import Camera from './Camera';
+import { Objects } from '../types';
 
 const Controls: FC<Props> = ({ objects }) => {
   const classes = useStyles();
