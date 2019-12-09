@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb-typescript", "prettier", "prettier/@typescript-eslint", "prettier/react"],
+  "extends": ["prettier", "prettier/@typescript-eslint"],
   "env": {
     "es6": true,
     "browser": true,
@@ -7,35 +7,20 @@
     "jest": true
   },
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
   "plugins": ["prettier", "@typescript-eslint"],
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".ts", ".tsx"]
+        "extensions": [".ts"]
       }
     }
   },
   "rules": {
-    "@typescript-eslint/no-use-before-define": "off",
-    "default-case": "off",
-    "react/jsx-props-no-spreading": "off",
-
-    "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }],
     "curly": ["error", "all"],
-    "prettier/prettier": "error",
-    "react/jsx-wrap-multilines": [
-      "error",
-      { "arrow": true, "return": true, "declaration": true }
-    ],
-    "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": false }],
-    "sort-vars": ["error", { "ignoreCase": true }]
-  },
-  "overrides": [
-    {
-      "files": ["**/*.tsx"],
-      "rules": {
-        "react/prop-types": "off"
-      }
-    }
-  ]
+    "prettier/prettier": "error"
+  }
 }
