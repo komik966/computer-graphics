@@ -1,11 +1,4 @@
-import {
-  Fog,
-  Group,
-  ImageLoader,
-  Scene,
-  TextureLoader,
-  WebGLRenderer,
-} from 'three';
+import { Group, Scene, TextureLoader, WebGLRenderer, Fog } from 'three';
 import style from './style';
 import Ground from './Ground';
 import Lighting from './Lighting';
@@ -18,12 +11,11 @@ export class App {
   private readonly buildings: Buildings;
   private readonly renderer = new WebGLRenderer({ antialias: true });
   private readonly scene = new Scene();
-  private readonly imageLoader = new ImageLoader();
   private readonly textureLoader = new TextureLoader();
   private readonly navigation = new Navigation(this.renderer.domElement);
 
-  constructor(cybertruckModel: Group, buildingsModel: Group) {
-    this.cybertruck = new Cybertruck(cybertruckModel, this.imageLoader);
+  constructor(cybertruckModel: Scene, buildingsModel: Group) {
+    this.cybertruck = new Cybertruck(cybertruckModel);
     this.buildings = new Buildings(buildingsModel);
 
     this.scene.fog = new Fog(0x000, 10, 5000);
@@ -61,8 +53,9 @@ export class App {
   private addLighting() {
     const lighting = new Lighting();
     this.scene.add(lighting.ambientLight);
-    // this.scene.add(lighting.hemisphereLight);
-    // this.scene.add(lighting.sky);
+    this.scene.add(lighting.dirLight);
+    this.scene.add(lighting.hemisphereLight);
+    this.scene.add(lighting.sky);
   }
 
   private addGround() {

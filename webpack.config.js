@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|fbx)$/i,
+        test: /\.(png|jpe?g|gif|fbx|gltf)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -38,6 +39,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new CopyPlugin([
+      {
+        from: path.join(__dirname, 'src', 'cybertruckPublicAssets'),
+        to: path.join(__dirname, 'dist'),
+      },
+    ]),
   ],
   resolve: {
     extensions: ['.ts', '.js'],

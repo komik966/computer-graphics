@@ -1,13 +1,21 @@
 import { Sky } from 'three/examples/jsm/objects/Sky';
-import { AmbientLight, HemisphereLight, ShaderMaterial } from 'three';
+import {
+  AmbientLight,
+  HemisphereLight,
+  ShaderMaterial,
+  DirectionalLight,
+} from 'three';
 
 export default class Lighting {
   public readonly sky = new Sky();
-  public readonly hemisphereLight = new HemisphereLight(0xffffbb, 0x080820, 1);
-  public readonly ambientLight = new AmbientLight();
+  public readonly hemisphereLight = new HemisphereLight(0xfffcf2, 0xfffcf2, 2);
+  public readonly ambientLight = new AmbientLight(0xfffcf2);
+  public readonly dirLight = new DirectionalLight(0xfffcf2, 0.1);
 
   constructor() {
     this.configureSky();
+    this.dirLight.position.set(0, 20, -20);
+    this.dirLight.lookAt(0, 0, 0);
   }
 
   private configureSky() {

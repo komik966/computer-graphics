@@ -21,7 +21,7 @@ export default class Ground {
 
     [map, displacementMap, normalMap, roughnessMap].forEach(tex => {
       tex.wrapS = tex.wrapT = RepeatWrapping;
-      tex.repeat.set(70, 70);
+      tex.repeat.set(80, 80);
     });
 
     const groundMaterial = new MeshStandardMaterial({
