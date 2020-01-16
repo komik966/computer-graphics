@@ -26,6 +26,8 @@ export class App {
     this.addGround();
     this.scene.add(this.cybertruck.object);
     this.scene.add(this.buildings.object);
+    this.navigation.camera.lookAt(this.cybertruck.object.position);
+    this.navigation.orbitControls.target = this.cybertruck.object.position;
   }
 
   private addCanvasDomElement() {
