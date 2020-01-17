@@ -25,6 +25,8 @@ export class App {
     this.addLighting();
     this.addGround();
     this.scene.add(this.cybertruck.object);
+    // this.scene.add(this.cybertruck.frontWheel);
+    // this.scene.add(this.cybertruck.backWheel);
     this.scene.add(this.buildings.object);
     this.navigation.camera.lookAt(this.cybertruck.object.position);
     this.navigation.orbitControls.target = this.cybertruck.object.position;
@@ -67,6 +69,7 @@ export class App {
 
   private animate() {
     requestAnimationFrame(this.animate.bind(this));
+    this.navigation.camera.lookAt(this.cybertruck.object.position);
     this.renderer.render(this.scene, this.navigation.camera);
   }
 }
